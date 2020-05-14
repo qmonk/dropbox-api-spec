@@ -3,10 +3,6 @@ namespace users
 
 import common
 
-import team_common
-
-import team_policies
-
 import users_common
 
 #
@@ -176,17 +172,9 @@ struct Team
 struct FullTeam extends Team
     "Detailed information about a team."
 
-    sharing_policies team_policies.TeamSharingPolicies
-        "Team policies governing sharing."
-
-    office_addin_policy team_policies.OfficeAddInPolicy
-        "Team policy governing the use of the Office Add-In."
-
     example default
         id = "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I"
         name = "Acme, Inc."
-        sharing_policies = default
-        office_addin_policy = disabled
 
 struct Name
     "Representations for a person's name to assist with internationalization."
@@ -265,14 +253,11 @@ struct TeamSpaceAllocation
     user_within_team_space_allocated UInt64
         "The total space allocated to the user within its team allocated space (0 means that
         no restriction is imposed on the user's quota within its team)."
-    user_within_team_space_limit_type team_common.MemberSpaceLimitType
-        "The type of the space limit imposed on the team member (off, alert_only, stop_sync)."
 
     example default
         used = 27182818284
         allocated = 100000000000
         user_within_team_space_allocated = 2000000000
-        user_within_team_space_limit_type = stop_sync
 
 #
 # Route: get_account_batch
